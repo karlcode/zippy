@@ -1,0 +1,49 @@
+.heroContainer {
+    width: 100%;
+    background: #140CA3;
+    display: flex;
+    overflow: hidden;
+    position: relative;
+    padding-bottom: 28%;
+}
+
+.heroCopy {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 70%;
+    height: 100%;
+    color: white;
+    vertical-align: middle;
+    text-align: left;
+    position: absolute;
+    left: 15%;
+}
+
+.heroImage {
+    position: absolute;
+    max-width: 568px;
+    max-height: 532px;
+    width: auto;
+    height: auto;
+    right: 0;
+    bottom: 0;
+}
+
+.heroBackgroundCircle {
+    /* Add breakpoint to disappear */
+    position: absolute;
+    width: 892px;
+    height: 840px;
+    border-radius: 50%;
+    top: 68px;
+    left: 53%;
+    background: #fef2f4;
+}
+
+.heroButtonRow {
+    display: flex;
+    flex-direction: row;
+    gap: 16px; /* Does not work on firefox - will need something like padding left on nth child elements */
+    padding: 10px 0;
+}

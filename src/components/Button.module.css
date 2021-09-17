@@ -1,0 +1,15 @@
+.primaryButton {
+    border-radius: 4px;
+    background: white;
+    width: 132px;
+    height: 43px;
+    font-weight: 700;
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: middle;
+    transition: background-color 0.2s ease-in;
+}
+
+.primaryButton:hover {
+    background: gainsboro;
+}

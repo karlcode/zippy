@@ -1,0 +1,10 @@
+.cardGridContainer {
+    height: 100%;
+    padding: 100px 9%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-auto-rows: 500px;
+    gap: 1em;
+    justify-items: center;
+    align-items: center;
+}

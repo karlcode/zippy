@@ -1,0 +1,33 @@
+.cardImageContainer {
+    border: 10px solid #FAF0E6;
+    border-radius: 15px;
+}
+
+.cardImage {
+    max-width:100%;
+    max-height:100%;
+}
+
+.cardContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 300px;
+    height: 300px;
+    transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+    cursor:pointer;
+}
+
+.cardContainer:hover {
+    transform: scale(1.05, 1.05);
+}
+
+/* Fade in the pseudo-element with the bigger shadow */
+.cardContainer:hover::after {
+    opacity: 1;
+}
+
+.cardContent {
+
+}

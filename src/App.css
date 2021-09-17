@@ -1,5 +1,7 @@
+
 .App {
   text-align: center;
+  width: 100vw;
 }
 
 .App-logo {
@@ -35,4 +37,19 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+
+h1 {
+  font-family: 'Darker Grotesque', sans-serif;
+  font-size: 64px;
+  line-height: 64px;
+  font-weight: bold;
+  padding-bottom: 18px;
+}
+
+h2 {
+  font-size: 30px;
+  line-height: 36px;
+  padding-bottom: 18px;
 }
