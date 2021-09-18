@@ -10,4 +10,4 @@ export default {
 
 const Template: ComponentStory<typeof Hero> = (args) => <Hero {...args} />;
 
-export const Banner = Template.bind({});
+export const Default = Template.bind({});

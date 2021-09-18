@@ -1,23 +1,12 @@
 .heroContainer {
     width: 100%;
-    background: #140CA3;
+    height: 516px;
+    background: var(--color-primary);
     display: flex;
     overflow: hidden;
     position: relative;
-    padding-bottom: 28%;
-}
+    /*padding-bottom: 28%;*/
 
-.heroCopy {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 70%;
-    height: 100%;
-    color: white;
-    vertical-align: middle;
-    text-align: left;
-    position: absolute;
-    left: 15%;
 }
 
 .heroImage {
@@ -27,7 +16,7 @@
     width: auto;
     height: auto;
     right: 0;
-    bottom: 0;
+    top: 38px;
 }
 
 .heroBackgroundCircle {
@@ -37,13 +26,37 @@
     height: 840px;
     border-radius: 50%;
     top: 68px;
-    left: 53%;
-    background: #fef2f4;
+    right: -227px;
+    background: var(--color-accent);
+}
+
+.heroContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    height: 100%;
+    text-align: left;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.heroCopy {
+    color: white;
+}
+
+.heroCopy h1 {
+    padding-bottom: 15px;
+
+}
+
+.heroCopy h2 {
+    padding-bottom: 35px;
 }
 
 .heroButtonRow {
+    position: relative;
     display: flex;
     flex-direction: row;
     gap: 16px; /* Does not work on firefox - will need something like padding left on nth child elements */
-    padding: 10px 0;
 }

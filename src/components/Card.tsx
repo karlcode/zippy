@@ -1,6 +1,7 @@
 import React from 'react';
-import styles from "./Card.module.css"
-import shoey from '../assets/images/random.png';
+import "./Card.css"
+import shoey from '../assets/images/nike-pegasus.png';
+import {convertToPrice} from "../utils";
 
 interface CardProps {
 
@@ -13,20 +14,21 @@ interface CardContentProps {
 
 export const CardImage = (): React.ReactElement => {
   return (
-      <div className={styles.cardImageContainer}>
-        <img className={styles.cardImage} src={shoey} alt={"shoey"}/>
+      <div className={`cardImageContainer`}>
+        <img className={`cardImage`} src={shoey} alt={"shoey"}/>
       </div>
   )
 }
 
 export const CardContent = ({title, price}: CardContentProps): React.ReactElement => {
-  const installment = (Number(price)/4).toFixed(2); //Ensure this does not underflow
+  const installment = convertToPrice(price/4)
+  const productPrice = convertToPrice(price)
   return (
-      <div className={styles.cardContent}>
-        <h5>{title}</h5>
-        <a href="https://www.nike.com/">www.nike.com</a>
-        <p>${installment}</p>
-        <p>${price} split into 4 easy payments</p>
+      <div className={`cardContent`}>
+        <h5 className={`cardContent_title`}>{title}</h5>
+        <a href="https://www.nike.com/" className={`cardContent_vendor hyperlink`}>www.nike.com</a>
+        <p className={`cardContent_installment`}>{installment}</p>
+        <p className={`cardContent_subtext`}>{productPrice} split into 4 easy payments</p>
       </div>
   )
 }
@@ -34,9 +36,9 @@ export const CardContent = ({title, price}: CardContentProps): React.ReactElemen
 export const Card = (): JSX.Element => {
   return (
     <>
-      <div className={styles.cardContainer}>
+      <div className={`cardContainer`}>
         <CardImage/>
-        <CardContent title={"HAHA"} price={40} />
+        <CardContent title={"Nike Pegasus Trail 2 GORE-TEX"} price={170} />
       </div>
     </>
   );

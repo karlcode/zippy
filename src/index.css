@@ -1,7 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@600&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@600;700&display=swap');
-
 /* CSS reset */
 
 /* http://meyerweb.com/eric/tools/css/reset/
@@ -58,21 +54,100 @@ table {
 
 body {
   margin: 0;
-  font-family: 'Darker Grotesque', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: 'Axiforma', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+html {
+  --color-primary: #140CA3;
+  --color-accent: #fef2f4;
+  --color-grey: #525761;
+  --color-offblack: rgba(0, 0, 0, 0.75);
+  --gutter: 16px;
+}
+
+h1, h2, .highlight {
+  font-family: 'Roc Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1 {
+  font-size: 64px !important;
+  font-weight: bold;
+}
+
+h2 {
+  font-size: 30px;
+}
+
+@media(min-width: 0px) {
+  .withGutter {
+    max-width: 300px;
+  }
+}
+
+@media(min-width: 490px) {
+  .withGutter {
+    max-width: 450px;
+  }
+
+}
+
+@media(min-width: 800px) {
+  .withGutter {
+    max-width: 750px;
+  }
+
+}
+
+@media(min-width: 1200px) {
+  .withGutter {
+    max-width: 1130px;
+  }
+}
+
+/* Colours */
+.grey {
+  color: var(--color-grey);
+  opacity: 0.8;
+}
+
+.offBlack {
+  color: var(--color-offblack)
+}
+
+.hyperlink {
+  cursor: pointer;
+  text-decoration: none;
+  color: var(--color-primary);
+}
+
+
+
+@font-face {
+  font-family: 'Roc Grotesk';
+  src: local('Roc Grotesk'), url(./assets/fonts/RocGrotesk.ttf) format('truetype');
+  /* other formats include: 'woff2', 'truetype, 'opentype',
+                            'embedded-opentype', and 'svg' */
 }
 
 @font-face {
-  font-family: 'FakeGrotesk';
-  src: local('FakeGrotesk'), url(./assets/fonts/FakeGrotesk.otf) format('opentype');
+  font-family: 'Axiforma';
+  src: local('Axiforma'), url(./assets/fonts/Axiforma.otf) format('opentype');
+  /* other formats include: 'woff2', 'truetype, 'opentype',
+                            'embedded-opentype', and 'svg' */
+}
+
+@font-face {
+  font-family: 'Axiforma';
+  font-weight: bold;
+  src: local('Axiforma'), url(./assets/fonts/Axiforma-bold.otf) format('opentype');
   /* other formats include: 'woff2', 'truetype, 'opentype',
                             'embedded-opentype', and 'svg' */
 }

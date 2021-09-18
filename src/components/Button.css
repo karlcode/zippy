@@ -1,9 +1,10 @@
 .primaryButton {
+    color: var(--color-primary);
     border-radius: 4px;
     background: white;
     width: 132px;
     height: 43px;
-    font-weight: 700;
+    font-weight: bold;
     cursor: pointer;
     display: inline-block;
     vertical-align: middle;

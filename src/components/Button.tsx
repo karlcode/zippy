@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Button.module.css';
+import "./Button.css";
 
 interface ButtonProps {
   /**
@@ -32,7 +32,7 @@ export const Button = ({
   return (
     <button
       type="button"
-      className={styles.primaryButton}
+      className={`primaryButton highlight`}
       style={{ backgroundColor }}
       {...props}
     >
