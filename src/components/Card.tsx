@@ -2,9 +2,11 @@ import React from 'react';
 import "./Card.css"
 import shoey from '../assets/images/nike-pegasus.png';
 import {convertToPrice} from "../utils";
+import {useModal} from "./Modal";
 
 interface CardProps {
-
+  onClick: () => any;
+  data: any;
 }
 
 interface CardContentProps {
@@ -24,22 +26,23 @@ export const CardContent = ({title, price}: CardContentProps): React.ReactElemen
   const installment = convertToPrice(price/4)
   const productPrice = convertToPrice(price)
   return (
-      <div className={`cardContent`}>
-        <h5 className={`cardContent_title`}>{title}</h5>
-        <a href="https://www.nike.com/" className={`cardContent_vendor hyperlink`}>www.nike.com</a>
-        <p className={`cardContent_installment`}>{installment}</p>
-        <p className={`cardContent_subtext`}>{productPrice} split into 4 easy payments</p>
-      </div>
-  )
+    <div className={`cardContent`}>
+      <h5 className={`cardContent_title`}>{title}</h5>
+      <a href="https://www.nike.com/" className={`cardContent_vendor hyperlink`}>
+        www.nike.com
+      </a>
+      <p className={`cardContent_installment`}>{installment}</p>
+      <p className={`cardContent_subtext`}>{productPrice} split into 4 easy payments</p>
+    </div>
+  );
 }
 
-export const Card = (): JSX.Element => {
+export const Card = ({onClick, data}: CardProps): JSX.Element => {
   return (
     <>
-      <div className={`cardContainer`}>
+      <div className={`cardContainer`} onClick={onClick}>
         <CardImage/>
         <CardContent title={"Nike Pegasus Trail 2 GORE-TEX"} price={170} />
       </div>
-    </>
-  );
+    </>);
 };

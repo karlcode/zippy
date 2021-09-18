@@ -1,10 +1,10 @@
-import React from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import React from "react";
+import { ComponentMeta, ComponentStory } from "@storybook/react";
 
-import { Hero } from '../components/Hero';
+import { Hero } from "../components/Hero";
 
 export default {
-  title: 'Components/Hero',
+  title: "Components/Hero",
   component: Hero,
 } as ComponentMeta<typeof Hero>;
 
