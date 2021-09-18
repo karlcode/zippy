@@ -18,13 +18,41 @@
     grid-template-columns: repeat(1, 1fr);
 }
 
-@media(min-width: 490px) {
+.cardGridHeader {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-bottom: 28px;
+}
+
+.cardGridHeader_moreLink {
+    text-align: start;
+    font-size: 20px;
+    font-weight: 600;
+    padding-bottom: 10px;
+}
+
+.cardGridHeader_productCount {
+    text-align: end;
+    font-size: 18px;
+}
+
+@media(min-width: 590px) {
     .cardGridContainer {
         grid-template-columns: repeat(2, 1fr);
     }
+
+    .cardGridHeader {
+        flex-direction: row;
+    }
+
+    .cardGridHeader_moreLink {
+        padding-bottom: 0;
+    }
 }
 
-@media(min-width: 800px) {
+@media(min-width: 900px) {
     .cardGridContainer {
         grid-template-columns: repeat(3, 1fr);
     }
@@ -35,24 +63,5 @@
     .cardGridContainer {
         grid-template-columns: repeat(4, 1fr);
     }
-}
-
-.cardGridHeader {
-    display: flex;
-    width: 100%;
-    flex-direction: row;
-    justify-content: space-between;
-    padding-bottom: 18px;
-}
-
-.cardGridHeader_moreLink {
-    text-align: start;
-    font-size: 20px;
-    font-weight: 600;
-}
-
-.cardGridHeader_productCount {
-    text-align: end;
-    font-size: 18px;
 }
 

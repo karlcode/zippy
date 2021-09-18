@@ -1,48 +1,51 @@
-import React from 'react';
-import "./Card.css"
-import shoey from '../assets/images/nike-pegasus.png';
-import {convertToPrice} from "../utils";
-import {useModal} from "./Modal";
+import React from "react";
+import "./Card.css";
+import shoey from "../assets/images/nike-pegasus.png";
+import { convertToPrice } from "../utils";
+import { ProductListData } from "../App";
 
 interface CardProps {
   onClick: () => any;
-  data: any;
+  data: ProductListData;
 }
 
 interface CardContentProps {
   title: string;
   price: number;
+  retailerName: string;
+  retailerUrl: string;
 }
 
-export const CardImage = (): React.ReactElement => {
+export const CardImage = ({ url }: { url: string }): React.ReactElement => {
   return (
-      <div className={`cardImageContainer`}>
-        <img className={`cardImage`} src={shoey} alt={"shoey"}/>
-      </div>
-  )
-}
+    <div className={`cardImageContainer`}>
+      <img className={`cardImage`} src={url} alt={"shoey"} />
+    </div>
+  );
+};
 
-export const CardContent = ({title, price}: CardContentProps): React.ReactElement => {
-  const installment = convertToPrice(price/4)
-  const productPrice = convertToPrice(price)
+export const CardContent = ({ title, price, retailerUrl, retailerName }: CardContentProps): React.ReactElement => {
+  const installment = convertToPrice(price / 4);
+  const productPrice = convertToPrice(price);
   return (
     <div className={`cardContent`}>
       <h5 className={`cardContent_title`}>{title}</h5>
-      <a href="https://www.nike.com/" className={`cardContent_vendor hyperlink`}>
-        www.nike.com
+      <a href={retailerUrl} className={`cardContent_vendor hyperlink`}>
+        {retailerName}
       </a>
       <p className={`cardContent_installment`}>{installment}</p>
       <p className={`cardContent_subtext`}>{productPrice} split into 4 easy payments</p>
     </div>
   );
-}
+};
 
-export const Card = ({onClick, data}: CardProps): JSX.Element => {
+export const Card = ({ onClick, data }: CardProps): JSX.Element => {
   return (
     <>
       <div className={`cardContainer`} onClick={onClick}>
-        <CardImage/>
-        <CardContent title={"Nike Pegasus Trail 2 GORE-TEX"} price={170} />
+        <CardImage url={data.productImagePath} />
+        <CardContent title={data.productTitle} price={data.productPrice} retailerName={data.retailerName} retailerUrl={data.retailerUrl} />
       </div>
-    </>);
+    </>
+  );
 };

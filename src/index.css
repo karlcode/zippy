@@ -88,20 +88,20 @@ h2 {
 
 @media(min-width: 0px) {
   .withGutter {
-    max-width: 100%;
+    max-width: 264px;
   }
 }
 
-@media(min-width: 490px) {
+@media(min-width: 590px) {
   .withGutter {
-    max-width: 450px;
+    max-width: 552px;
   }
-
 }
 
-@media(min-width: 800px) {
+@media(min-width: 900px) {
   .withGutter {
-    max-width: 750px;
+    /*max-width: 750px;*/
+    max-width: 844px;
   }
 
 }

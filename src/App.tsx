@@ -4,26 +4,26 @@ import "./App.css";
 import { Hero } from "./components/Hero";
 import { CardGrid } from "./components/CardGrid";
 import { Convert, SearchResultsInterface } from "./SearchResultsInterface";
-//
-//   const searchResultsInterface = Convert.toSearchResultsInterface(json);
 
-const mockData: any[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
-
-interface ProductListData {
+export interface ProductListData {
+  id: string;
   productTitle: string;
   productPrice: number;
   productCurrency: number;
   productImagePath: string;
-  productRetailer: string;
+  retailerName: string;
+  retailerUrl: string;
 }
 
 const resultsDtoToProductListData = ({ data, meta }: SearchResultsInterface): ProductListData[] => {
   return data.map((d) => ({
+    id: d.id,
     productTitle: d.attributes.product_name,
     productImagePath: d.attributes.e_image_urls_og,
-    productPrice: d.attributes.sale_price || NaN,
+    productPrice: d.attributes.retailer_price || NaN,
     productCurrency: Number(d.attributes.currency),
-    productRetailer: d.attributes.e_retailer_display_name,
+    retailerName: d.attributes.e_retailer_display_name,
+    retailerUrl: d.attributes.retailer_url,
   }));
 };
 
@@ -33,7 +33,7 @@ function App() {
   useEffect(() => {
     getProducts()
       .then((json) => {
-        return Convert.toSearchResultsInterface(json); // QuickType util for verifying JSON is valid
+        return Convert.toSearchResultsInterface(json); // QuickType util which uses a JSON string and verifies JSON is valid
       })
       .then((results) => {
         return resultsDtoToProductListData(results);
@@ -47,8 +47,12 @@ function App() {
       });
 
     async function getProducts() {
-      const response = await fetch("https://api.theurge.com.au/search-results?brands=Nike");
-      return response.json();
+      const response = await fetch("https://api.theurge.com.au/search-results?brands=Nike", {
+        headers: {
+          Accept: "application/json",
+        },
+      });
+      return response.text();
     }
   }, []);
 

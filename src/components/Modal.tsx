@@ -2,17 +2,30 @@ import React, { useState } from "react";
 
 import "./Modal.css";
 import { createPortal } from "react-dom";
+import { ProductListData } from "../App";
 
 interface ModalProps {
   visible: boolean;
   onClose: () => any;
-  modalData: any;
+  data: ProductListData;
 }
 
-export const useModal = (): [visible: any, modalData: any, openModal: any, closeModal: any] => {
+type ModalHookProps<T> = [
+  /** Visibility of modal */
+  boolean,
+  /** Type of data that modal will consume to render */
+  T,
+  /** Open modal */
+  (data: T) => () => any,
+  /** Close modal */
+  () => any
+];
+
+export const useModal = <T extends object>(): ModalHookProps<T> => {
   const [visible, setVisible] = useState(false);
-  const [modalData, setModalData] = useState();
-  const openModalWithData = (data: any) => () => {
+  const [modalData, setModalData] = useState<T>({} as T);
+
+  const openModalWithData = (data: T) => () => {
     setVisible(true);
     setModalData(data);
   };
@@ -23,15 +36,20 @@ export const useModal = (): [visible: any, modalData: any, openModal: any, close
   return [visible, modalData, openModalWithData, closeModal];
 };
 
-export const Modal = ({ visible, onClose, modalData }: ModalProps) => {
+export const Modal = ({ visible, onClose, data }: ModalProps) => {
   return createPortal(
     <div className={`Modal ${visible ? "Modal--open" : ""}`} onClick={onClose}>
       <div className={`Modal-content ${visible ? "Modal-content--open" : ""}`} onClick={(e) => e.stopPropagation()}>
         <button className={`Modal-closeButton`} onClick={onClose}>
           X
         </button>
-        <div className={`Modal-header`}>{modalData}</div>
-        <div className={`Modal-body`}>Body</div>
+        <div className={`Modal-header`} aria-labelledby={""}>
+          {/* Probably put an a link here */}
+          {data.productTitle}
+        </div>
+        <div className={`Modal-body`} aria-describedby={""}>
+          {data.productPrice}
+        </div>
       </div>
     </div>,
     document.getElementById("root") || document.body
