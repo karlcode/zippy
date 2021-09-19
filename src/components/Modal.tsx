@@ -4,7 +4,8 @@ import "./Modal.css";
 import { createPortal } from "react-dom";
 import { convertToPrice } from "../utils";
 import { Button } from "./Button";
-import {ProductListData} from "../ProductListInterface";
+import { ProductListData } from "../ProductListInterface";
+import Skeleton from "react-loading-skeleton";
 
 interface ModalProps {
   visible: boolean;
@@ -57,6 +58,9 @@ export const Modal = ({ visible, onClose, data }: ModalProps) => {
               <span className={`rightAlign`}>{installment}</span>
             </h2>
             <span className={`row rightAlign`}>{productPrice} split into 4 easy payments</span>
+            <div className={`placeholderText`}>
+              <Skeleton count={5}/>
+            </div>
             <Button className={`Modal-actionButton`} label={"Add to Cart"} primary={false} />
           </div>
         </div>

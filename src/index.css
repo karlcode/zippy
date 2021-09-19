@@ -257,6 +257,15 @@ h2 {
   visibility: hidden;
 }
 
+.placeholderText {
+  width: 100%;
+}
+
+.placeholderText span {
+  width: 100%;
+  margin-bottom: 30px;
+}
+
 @font-face {
   font-family: "Roc Grotesk";
   src: local("Roc Grotesk"), url(./assets/fonts/RocGrotesk.ttf) format("truetype");
