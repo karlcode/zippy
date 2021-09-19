@@ -1,4 +1,4 @@
-import React, {lazy, useState} from "react";
+import React from "react";
 
 import "./CardGrid.css";
 import { Modal, useModal } from "./Modal";

@@ -13,7 +13,7 @@ export const LoadingCard = (): JSX.Element => {
           <h5 className={`cardContent_title`}>
             <Skeleton />
           </h5>
-          <a href={""} target="_blank" rel="noreferrer" className={`cardContent_vendor hyperlink`}>
+          <a href={"www.google.com"} target="_blank" rel="noreferrer" className={`cardContent_vendor hyperlink`}>
             <Skeleton />
           </a>
           <p className={`cardContent_installment`}>
