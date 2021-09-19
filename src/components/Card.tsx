@@ -1,8 +1,8 @@
 import React from "react";
 import "./Card.css";
-import shoey from "../assets/images/nike-pegasus.png";
 import { convertToPrice } from "../utils";
 import { ProductListData } from "../App";
+import CardImage from "./CardImage";
 
 interface CardProps {
   onClick: () => any;
@@ -16,21 +16,13 @@ interface CardContentProps {
   retailerUrl: string;
 }
 
-export const CardImage = ({ url }: { url: string }): React.ReactElement => {
-  return (
-    <div className={`cardImageContainer`}>
-      <img className={`cardImage`} src={url} alt={"shoey"} />
-    </div>
-  );
-};
-
-export const CardContent = ({ title, price, retailerUrl, retailerName }: CardContentProps): React.ReactElement => {
+export const CardContent = ({ title, price, retailerUrl, retailerName }: CardContentProps): JSX.Element => {
   const installment = convertToPrice(price / 4);
   const productPrice = convertToPrice(price);
   return (
-    <div className={`cardContent`}>
+    <div className={`cardContent leftAlign`}>
       <h5 className={`cardContent_title`}>{title}</h5>
-      <a href={retailerUrl} className={`cardContent_vendor hyperlink`}>
+      <a href={retailerUrl} target="_blank" rel="noreferrer" className={`cardContent_vendor hyperlink`}>
         {retailerName}
       </a>
       <p className={`cardContent_installment`}>{installment}</p>
@@ -39,13 +31,20 @@ export const CardContent = ({ title, price, retailerUrl, retailerName }: CardCon
   );
 };
 
-export const Card = ({ onClick, data }: CardProps): JSX.Element => {
+const Card = ({ onClick, data }: CardProps): JSX.Element => {
   return (
     <>
       <div className={`cardContainer`} onClick={onClick}>
         <CardImage url={data.productImagePath} />
-        <CardContent title={data.productTitle} price={data.productPrice} retailerName={data.retailerName} retailerUrl={data.retailerUrl} />
+        <CardContent
+          title={data.productTitle}
+          price={data.productPrice}
+          retailerName={data.retailerName}
+          retailerUrl={data.retailerUrl}
+        />
       </div>
     </>
   );
 };
+
+export default Card;

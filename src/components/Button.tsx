@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import "./Button.css";
 
 interface ButtonProps {
@@ -18,24 +18,19 @@ interface ButtonProps {
    * Optional click handler
    */
   onClick?: () => void;
+  /**
+   * Optional additional styling
+   */
+  className?: string;
 }
 
-/**
- * Primary UI component for user interaction
- */
-export const Button = ({
-  primary = false,
-  backgroundColor,
-  label,
-  ...props
-}: ButtonProps) => {
+export const Button = ({ primary = false, backgroundColor, label, className, ...props }: ButtonProps): JSX.Element => {
   return (
     <button
       type="button"
-      className={`primaryButton highlight`}
+      className={`${primary ? "primaryButton" : "secondaryButton"} highlight ${className}`}
       style={{ backgroundColor }}
-      {...props}
-    >
+      {...props}>
       {label}
     </button>
   );

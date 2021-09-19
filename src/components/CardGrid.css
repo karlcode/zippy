@@ -1,67 +1,59 @@
 .cardGrid {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 100%;
-    margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .cardGridContainer {
-    width: 100%;
-    height: 100%;
-    display: grid;
-    grid-auto-rows: minmax(548px, 1fr);
-    gap: 24px;
-    justify-items: center;
-    align-items: center;
-    justify-content: space-around;
-    grid-template-columns: repeat(1, 1fr);
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-auto-rows: minmax(548px, 1fr);
+  gap: 24px;
+  justify-items: center;
+  align-items: center;
+  justify-content: space-around;
+  grid-template-columns: repeat(1, 1fr);
 }
 
 .cardGridHeader {
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-    justify-content: space-between;
-    padding-bottom: 28px;
+  flex-direction: column;
 }
 
 .cardGridHeader_moreLink {
-    text-align: start;
-    font-size: 20px;
-    font-weight: 600;
-    padding-bottom: 10px;
+  font-size: 20px;
+  font-weight: 600;
+  padding-bottom: 10px;
 }
 
 .cardGridHeader_productCount {
-    text-align: end;
-    font-size: 18px;
+  font-size: 18px;
 }
 
-@media(min-width: 590px) {
-    .cardGridContainer {
-        grid-template-columns: repeat(2, 1fr);
-    }
+@media (min-width: 590px) {
+  .cardGridContainer {
+    grid-template-columns: repeat(2, 1fr);
+  }
 
-    .cardGridHeader {
-        flex-direction: row;
-    }
+  .cardGridHeader {
+    flex-direction: row;
+  }
 
-    .cardGridHeader_moreLink {
-        padding-bottom: 0;
-    }
+  .cardGridHeader_moreLink {
+    padding-bottom: 0;
+  }
 }
 
-@media(min-width: 900px) {
-    .cardGridContainer {
-        grid-template-columns: repeat(3, 1fr);
-    }
-
+@media (min-width: 900px) {
+  .cardGridContainer {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
-@media(min-width: 1200px) {
-    .cardGridContainer {
-        grid-template-columns: repeat(4, 1fr);
-    }
+@media (min-width: 1200px) {
+  .cardGridContainer {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
-

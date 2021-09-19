@@ -1,10 +1,8 @@
 import React from "react";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-
-import { CardGrid } from "../components/CardGrid";
-
 import shoey from "../assets/images/nike-pegasus.png";
-import {ProductListData} from "../App";
+import { ProductListData } from "../App";
+import CardGrid from "../components/CardGrid";
 
 export default {
   title: "Components/CardGrid",

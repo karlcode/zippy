@@ -30,7 +30,6 @@
   width: 100%;
   text-overflow: ellipsis;
   flex-direction: column;
-  text-align: left;
   padding-top: 22px;
 }
 

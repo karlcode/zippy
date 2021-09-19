@@ -1,5 +1,5 @@
-import '../src/index.css';
-import '../src/App.css';
+import "../src/index.css";
+import "../src/App.css";
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
@@ -9,4 +9,5 @@ export const parameters = {
       date: /Date$/,
     },
   },
-}
+  layout: "fullscreen",
+};

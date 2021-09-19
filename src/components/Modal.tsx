@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import "./Modal.css";
 import { createPortal } from "react-dom";
 import { ProductListData } from "../App";
+import { convertToPrice } from "../utils";
+import { Button } from "./Button";
 
 interface ModalProps {
   visible: boolean;
@@ -37,19 +39,34 @@ export const useModal = <T extends object>(): ModalHookProps<T> => {
 };
 
 export const Modal = ({ visible, onClose, data }: ModalProps) => {
+  const productPrice = convertToPrice(data.productPrice);
+  const installment = convertToPrice(data.productPrice / 4);
   return createPortal(
-    <div className={`Modal ${visible ? "Modal--open" : ""}`} onClick={onClose}>
+    <div
+      className={`Modal ${visible ? "Modal--open" : ""}`}
+      onClick={onClose}
+      aria-labelledby={""}
+      aria-describedby={""}
+      aria-modal
+      role="presentation">
       <div className={`Modal-content ${visible ? "Modal-content--open" : ""}`} onClick={(e) => e.stopPropagation()}>
-        <button className={`Modal-closeButton`} onClick={onClose}>
-          X
-        </button>
-        <div className={`Modal-header`} aria-labelledby={""}>
-          {/* Probably put an a link here */}
-          {data.productTitle}
+        <div className={`Modal-body`}>
+          <div className={`Modal-imageContainer`}>
+            <img className={`Modal-body-image`} src={data.productImagePath} alt={""} />
+          </div>
+          <div className={`Modal-productContainer`}>
+            <h1 className={`highlight row`}>{data.productTitle}</h1>
+            <h2 className={`highlight row`}>
+              <a className={`hyperlink`} href={data.retailerUrl} rel="noreferrer" target="_blank">
+                {data.retailerName}
+              </a>
+              <span className={`strikeThrough rightAlign`}>{productPrice}</span>
+            </h2>
+            <span className={`row rightAlign`}>Pay {installment} over 4 installments with Zip</span>
+            <Button className={`Modal-actionButton`} label={"Add to Cart"} primary />
+          </div>
         </div>
-        <div className={`Modal-body`} aria-describedby={""}>
-          {data.productPrice}
-        </div>
+        <button className={`Modal-closeButton`} onClick={onClose} />
       </div>
     </div>,
     document.getElementById("root") || document.body

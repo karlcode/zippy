@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { lazy, Suspense, useState } from "react";
 import "./index.css";
 import "./App.css";
 import { Hero } from "./components/Hero";
-import { CardGrid } from "./components/CardGrid";
 import { Convert, SearchResultsInterface } from "./SearchResultsInterface";
+import { ProductPage } from "./components/ProductPage";
 
 export interface ProductListData {
   id: string;
@@ -27,40 +27,51 @@ const resultsDtoToProductListData = ({ data, meta }: SearchResultsInterface): Pr
   }));
 };
 
-function App() {
-  const [productData, setProductData] = useState<any>([]);
-
-  useEffect(() => {
-    getProducts()
-      .then((json) => {
-        return Convert.toSearchResultsInterface(json); // QuickType util which uses a JSON string and verifies JSON is valid
-      })
-      .then((results) => {
-        return resultsDtoToProductListData(results);
-      })
-      .then((products) => {
-        setProductData(products);
-      })
-      .catch((err) => {
-        console.log("there was an issue retrieving your data");
-        // Create an error state for this data
-      });
-
-    async function getProducts() {
-      const response = await fetch("https://api.theurge.com.au/search-results?brands=Nike", {
-        headers: {
-          Accept: "application/json",
-        },
-      });
-      return response.text();
+const wrapAsync = (promise: Promise<any>) => {
+  let status = "pending";
+  let result: any;
+  let suspender = promise.then(
+    (res) => {
+      status = "success";
+      result = res;
+    },
+    (rej) => {
+      status = "error";
+      result = rej;
     }
-  }, []);
+  );
+  return {
+    read: () => {
+      if (status === "pending") {
+        throw suspender;
+      } else if (status === "error") {
+        throw result;
+      } else if (status === "success") {
+        return result;
+      }
+    },
+  };
+};
+
+function App() {
+  async function getProducts() {
+    const response = await fetch("https://api.theurge.com.au/search-results?brands=Nike", {
+      headers: {
+        Accept: "application/json",
+      },
+    });
+    const rawJSON = await response.text();
+    const parsedJSON = Convert.toSearchResultsInterface(rawJSON);
+    return resultsDtoToProductListData(parsedJSON);
+  }
 
   return (
     <div className="App">
       <Hero />
       <div className={`App_products`}>
-        <CardGrid data={productData} />
+        <Suspense fallback={<div>Loading</div>}>
+          <ProductPage data={wrapAsync(getProducts())} />
+        </Suspense>
       </div>
     </div>
   );

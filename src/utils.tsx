@@ -5,5 +5,6 @@
  * @param currency
  */
 export const convertToPrice = (price: number, currency: string = "AUD"): string => {
-  return `$${price.toFixed(2)}`; //ensure there is no underflow
+  return price ? `$${price.toFixed(2)}` : "Price not available"; //ensure there is no underflow
 }
+
