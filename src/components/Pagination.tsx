@@ -9,7 +9,7 @@ interface PaginationProps {
   onPageChange: (selectedItem: { selected: number }) => any;
 }
 
-export const Pagination = ({ visible, pageCount = 10, range = 5, onPageChange }: PaginationProps): JSX.Element => {
+export const Pagination = ({ visible, pageCount, range = 5, onPageChange }: PaginationProps): JSX.Element => {
   return (
     <ReactPaginate
       containerClassName={`Pagination highlight`}
