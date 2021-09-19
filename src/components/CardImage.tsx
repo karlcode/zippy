@@ -1,13 +1,19 @@
 import React from "react";
+import { loadImage } from "../utils";
 
 interface CardImageProps {
-  url: string
+  url: string;
 }
+
+const SuspenseImage = (props: React.ImgHTMLAttributes<HTMLImageElement>) => {
+  props.src && loadImage(props.src).read();
+  return <img {...props} alt={"todo"} />;
+};
 
 const CardImage = ({ url }: CardImageProps): JSX.Element => {
   return (
     <div className={`cardImageContainer`}>
-      <img loading="lazy" className={`cardImage`} src={url} alt={"shoey"} />
+      <SuspenseImage className={`cardImage`} src={url} />
     </div>
   );
 };

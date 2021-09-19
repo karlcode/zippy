@@ -1,3 +1,7 @@
+interface Resource {
+  read: () => any;
+}
+
 /**
  * Convert number to price string with currency symbol based on locale/region
  * Default to $ but will need special logic for other currencies
@@ -11,7 +15,7 @@ export const convertToPrice = (price: number, currency: string = "AUD"): string 
 /**
  * Suspense resource wrapper for handling data fetching states
  */
-export const wrapResource = (promise: Promise<any>) => {
+export const wrapResource = (promise: Promise<any>): Resource => {
   let status = "pending";
   let result: any;
   let suspender = promise.then(
@@ -35,4 +39,25 @@ export const wrapResource = (promise: Promise<any>) => {
       }
     },
   };
+};
+
+const imageCache = new Map<string, any>();
+
+/**
+ * Suspense for img src load
+ * Taken from dev.to/sergiodxa/use-react-suspense-to-wait-for-an-image-to-load-17k5
+ * */
+export const loadImage = (source: string): Resource => {
+  let resource = imageCache.get(source);
+  if (resource) return resource;
+  resource = wrapResource(
+    new Promise((res, rej) => {
+      const img = new window.Image();
+      img.src = source;
+      img.addEventListener("load", () => res(source));
+      img.addEventListener("error", () => rej(new Error("Couldn't load image")));
+    })
+  );
+  imageCache.set(source, resource);
+  return resource;
 };
