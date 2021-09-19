@@ -1,0 +1,29 @@
+.Pagination {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 70px 0;
+  line-height: 40px;
+}
+
+.Pagination-link {
+  display: block;
+  font-weight: 600;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.Pagination-link:hover {
+  background-color: var(--color-beige);
+}
+
+.Pagination-activeLink {
+  color: white;
+  background-color: var(--color-primary) !important;
+}
+
+.Pagination-ellipses {
+  width: 40px;
+}

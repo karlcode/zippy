@@ -7,5 +7,9 @@ interface ProductPageProps {
 
 export const ProductPage = ({ data }: ProductPageProps): JSX.Element => {
   const products = data.read();
-  return <CardGrid data={products} />;
+  return (
+    <div>
+      <CardGrid data={products} />
+    </div>
+  );
 };

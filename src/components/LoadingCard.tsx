@@ -10,7 +10,6 @@ export const LoadingCard = (): JSX.Element => {
       <div className={`cardContainer`}>
         <CardImage url={shoey} />
         <CardContent title={"LOL"} price={123} retailerName={"LOL"} retailerUrl={"LOL"} />
-        {/*  make a fake card content*/}
       </div>
     </>
   );

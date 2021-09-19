@@ -8,3 +8,8 @@
 .App_products {
   padding: 74px 0;
 }
+
+.LoadingPage {
+  width: 100%;
+  height: 100vh;
+}

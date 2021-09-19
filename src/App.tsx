@@ -1,9 +1,11 @@
-import React, { lazy, Suspense, useState } from "react";
+import React, { Suspense } from "react";
 import "./index.css";
 import "./App.css";
 import { Hero } from "./components/Hero";
 import { Convert, SearchResultsInterface } from "./SearchResultsInterface";
 import { ProductPage } from "./components/ProductPage";
+import { LoadingPage } from "./components/LoadingPage";
+import { wrapAsync } from "./utils";
 
 export interface ProductListData {
   id: string;
@@ -27,32 +29,6 @@ const resultsDtoToProductListData = ({ data, meta }: SearchResultsInterface): Pr
   }));
 };
 
-const wrapAsync = (promise: Promise<any>) => {
-  let status = "pending";
-  let result: any;
-  let suspender = promise.then(
-    (res) => {
-      status = "success";
-      result = res;
-    },
-    (rej) => {
-      status = "error";
-      result = rej;
-    }
-  );
-  return {
-    read: () => {
-      if (status === "pending") {
-        throw suspender;
-      } else if (status === "error") {
-        throw result;
-      } else if (status === "success") {
-        return result;
-      }
-    },
-  };
-};
-
 function App() {
   async function getProducts() {
     const response = await fetch("https://api.theurge.com.au/search-results?brands=Nike", {
@@ -69,7 +45,7 @@ function App() {
     <div className="App">
       <Hero />
       <div className={`App_products`}>
-        <Suspense fallback={<div>Loading</div>}>
+        <Suspense fallback={<LoadingPage />}>
           <ProductPage data={wrapAsync(getProducts())} />
         </Suspense>
       </div>

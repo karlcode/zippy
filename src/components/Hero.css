@@ -1,80 +1,88 @@
 .heroContainer {
-    width: 100%;
-    height: 250px;
-    background: var(--color-primary);
-    display: flex;
-    overflow: hidden;
-    position: relative;
-    /*padding-bottom: 28%;*/
-
-}
-
-.heroImage {
-    position: absolute;
-    max-width: 568px;
-    max-height: 532px;
-    width: auto;
-    height: auto;
-    right: 0;
-    top: 38px;
-
-}
-
-.heroBackgroundCircle {
-    /* Add breakpoint to disappear */
-    position: absolute;
-    width: 892px;
-    height: 840px;
-    border-radius: 50%;
-    top: 68px;
-    right: -227px;
-    background: var(--color-accent);
-}
-
-.heroContent {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    position: relative;
-    height: 100%;
-    text-align: left;
-    width: 100%;
-    margin: 0 auto;
-}
-
-.heroCopy {
-    color: white;
-}
-
-.heroCopy h1 {
-    padding-bottom: 15px;
-
-}
-
-.heroCopy h2 {
-    padding-bottom: 35px;
-}
-
-.heroButtonRow {
-    position: relative;
-    display: flex;
-    flex-direction: row;
-    gap: 16px; /* Does not work on firefox - will need something like padding left on nth child elements */
+  width: 100%;
+  height: 250px;
+  background: var(--color-primary);
+  display: flex;
+  overflow: hidden;
+  position: relative;
+  /*padding-bottom: 28%;*/
 }
 
 .heroBackground {
-    position: absolute;
-    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2);
-    width: 100%;
-    height: 100%;
-    backdrop-filter: blur(5px);
+  position: absolute;
+  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  filter: blur(3px) brightness(80%);
+  transition: filter 1s;
 }
-@media (min-width: 590px) {
-    .heroContainer {
-        height: 516px;
-    }
-    .heroBackground {
-        backdrop-filter: blur(0);
 
-    }
+.heroImage {
+  position: absolute;
+  max-width: 568px;
+  max-height: 532px;
+  width: auto;
+  height: auto;
+  right: 0;
+  top: 38px;
+}
+
+.heroBackgroundCircle {
+  position: absolute;
+  width: 892px;
+  height: 840px;
+  border-radius: 50%;
+  top: 68px;
+  right: -227px;
+  background: var(--color-accent);
+}
+
+.heroContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  height: 100%;
+  text-align: left;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.heroCopy {
+  color: white;
+}
+
+.heroCopy h1 {
+  padding-bottom: 15px;
+}
+
+.heroCopy h2 {
+  padding-bottom: 35px;
+}
+
+.heroButtonRow {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  gap: 16px; /* Does not work on firefox - will need something like padding left on nth child elements */
+}
+
+@media (min-width: 590px) {
+  .heroContainer {
+    height: 516px;
+  }
+}
+
+@media (min-width: 900px) {
+  .heroBackground {
+    filter: blur(3px) brightness(80%);
+  }
+}
+
+@media (min-width: 1200px) {
+  .heroBackground {
+    filter: none;
+  }
 }

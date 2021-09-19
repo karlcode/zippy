@@ -8,3 +8,29 @@ export const convertToPrice = (price: number, currency: string = "AUD"): string 
   return price ? `$${price.toFixed(2)}` : "Price not available"; //ensure there is no underflow
 }
 
+
+export const wrapAsync = (promise: Promise<any>) => {
+  let status = "pending";
+  let result: any;
+  let suspender = promise.then(
+    (res) => {
+      status = "success";
+      result = res;
+    },
+    (rej) => {
+      status = "error";
+      result = rej;
+    }
+  );
+  return {
+    read: () => {
+      if (status === "pending") {
+        throw suspender;
+      } else if (status === "error") {
+        throw result;
+      } else if (status === "success") {
+        return result;
+      }
+    },
+  };
+};

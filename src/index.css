@@ -5,19 +5,88 @@
    License: none (public domain)
 */
 
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video, button {
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video,
+button {
   margin: 0;
   padding: 0;
   border: 0;
@@ -26,22 +95,35 @@ time, mark, audio, video, button {
   vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
   display: block;
 }
 body {
   line-height: 1;
 }
-ol, ul {
+ol,
+ul {
   list-style: none;
 }
-blockquote, q {
+blockquote,
+q {
   quotes: none;
 }
-blockquote:before, blockquote:after,
-q:before, q:after {
-  content: '';
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
   content: none;
 }
 table {
@@ -51,71 +133,82 @@ table {
 
 /* CSS reset */
 
-
 body {
   margin: 0;
-  font-family: 'Axiforma', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: "Axiforma", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
+    "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 html {
-  --color-primary: #140CA3;
+  --color-primary: #140ca3;
   --color-accent: #fef2f4;
   --color-grey: #525761;
+  --color-beige: #faf0e6;
   --color-offblack: rgba(0, 0, 0, 0.75);
-  --gutter: 16px;
+  --gutter: 1em;
 }
 
-h1, h2, .highlight {
-  font-family: 'Roc Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-  sans-serif;
+h1,
+h2,
+.highlight {
+  font-family: "Roc Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
+    "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 h1 {
-  font-size: 32px;
+  font-size: 2rem;
   font-weight: bold;
 }
 
 h2 {
-  font-size: 24px;
+  font-size: 1.5rem;
 }
 
-@media(min-width: 0px) {
+@media (min-width: 0px) {
   .withGutter {
     max-width: 264px;
   }
 }
 
-@media(min-width: 590px) {
+@media (min-width: 400px) {
+
+}
+
+
+@media (min-width: 590px) {
   h1 {
-    font-size: 64px;
+    font-size: 2.5rem;
   }
 
   h2 {
-    font-size: 32px;
+    font-size: 2rem;
   }
-
 
   .withGutter {
     max-width: 552px;
   }
 }
 
-@media(min-width: 900px) {
+@media (min-width: 900px) {
+  h1 {
+    font-size: 3rem;
+  }
+
   .withGutter {
     /*max-width: 750px;*/
     max-width: 844px;
   }
-
 }
 
-@media(min-width: 1200px) {
+@media (min-width: 1200px) {
+  h1 {
+    font-size: 4rem;
+  }
+
   .withGutter {
     max-width: 1130px;
   }
@@ -128,7 +221,7 @@ h2 {
 }
 
 .offBlack {
-  color: var(--color-offblack)
+  color: var(--color-offblack);
 }
 
 .hyperlink {
@@ -157,25 +250,24 @@ h2 {
   text-decoration: line-through;
 }
 
-
 @font-face {
-  font-family: 'Roc Grotesk';
-  src: local('Roc Grotesk'), url(./assets/fonts/RocGrotesk.ttf) format('truetype');
+  font-family: "Roc Grotesk";
+  src: local("Roc Grotesk"), url(./assets/fonts/RocGrotesk.ttf) format("truetype");
   /* other formats include: 'woff2', 'truetype, 'opentype',
                             'embedded-opentype', and 'svg' */
 }
 
 @font-face {
-  font-family: 'Axiforma';
-  src: local('Axiforma'), url(./assets/fonts/Axiforma.otf) format('opentype');
+  font-family: "Axiforma";
+  src: local("Axiforma"), url(./assets/fonts/Axiforma.otf) format("opentype");
   /* other formats include: 'woff2', 'truetype, 'opentype',
                             'embedded-opentype', and 'svg' */
 }
 
 @font-face {
-  font-family: 'Axiforma';
+  font-family: "Axiforma";
   font-weight: bold;
-  src: local('Axiforma'), url(./assets/fonts/Axiforma-bold.otf) format('opentype');
+  src: local("Axiforma"), url(./assets/fonts/Axiforma-bold.otf) format("opentype");
   /* other formats include: 'woff2', 'truetype, 'opentype',
                             'embedded-opentype', and 'svg' */
 }

@@ -60,9 +60,9 @@ export const Modal = ({ visible, onClose, data }: ModalProps) => {
               <a className={`hyperlink`} href={data.retailerUrl} rel="noreferrer" target="_blank">
                 {data.retailerName}
               </a>
-              <span className={`strikeThrough rightAlign`}>{productPrice}</span>
+              <span className={`rightAlign`}>{installment}</span>
             </h2>
-            <span className={`row rightAlign`}>Pay {installment} over 4 installments with Zip</span>
+            <span className={`row rightAlign`}>{productPrice} split into 4 easy payments</span>
             <Button className={`Modal-actionButton`} label={"Add to Cart"} primary />
           </div>
         </div>

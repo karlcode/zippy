@@ -4,6 +4,7 @@ import "./CardGrid.css";
 import { Modal, useModal } from "./Modal";
 import { ProductListData } from "../App";
 import { LoadingCard } from "./LoadingCard";
+import {Pagination} from "./Pagination";
 
 interface CardGridProps {
   data: ProductListData[];
@@ -34,12 +35,13 @@ const CardGrid = ({ data }: CardGridProps): JSX.Element => {
     <div className={`cardGrid withGutter`}>
       <CardGridHeader />
       <div className={`cardGridContainer`}>
-        {data.map((item) => (
-          <Suspense fallback={<LoadingCard />}>
+        <Suspense fallback={<LoadingCard />}>
+          {data.map((item) => (
             <Card key={item.id} onClick={openModalWithData(item)} data={item} />
-          </Suspense>
-        ))}
+          ))}
+        </Suspense>
       </div>
+      <Pagination visible pageCount={100} range={4} />
       <Modal onClose={closeModal} visible={visible} data={modalData} />
     </div>
   );
