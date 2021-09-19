@@ -32,7 +32,7 @@
   box-sizing: border-box;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
-  border: 10px solid #faf0e6;
+  border: 10px solid var(--color-beige);
 }
 
 .Modal-content--open {
@@ -45,6 +45,7 @@
   flex-direction: column;
   width: 100%;
   height: 100%;
+  overflow: hidden;
 }
 
 .Modal-imageContainer {
@@ -63,6 +64,7 @@
   -moz-box-sizing: border-box; /* Firefox, other Gecko */
   box-sizing: border-box; /* Opera/IE 8+ */
   padding: 40px 20px;
+  overflow-y: scroll;
 }
 
 .Modal-body-image {
