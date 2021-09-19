@@ -2,7 +2,8 @@ import React from "react";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import shoey from "../assets/images/nike-pegasus.png";
 import CardGrid from "../components/CardGrid";
-import {ProductListData} from "../ProductListInterface";
+import { ProductListData } from "../ProductListInterface";
+import { LoadingPage } from "../components/LoadingPage";
 
 export default {
   title: "Components/CardGrid",
@@ -22,6 +23,7 @@ const mockData = [...Array(16)].map(() => ({
   id: Math.random().toString(),
 }));
 
-const Template: ComponentStory<typeof CardGrid> = (args) => <CardGrid {...args} data={mockData} />;
+// const Template: ComponentStory<typeof CardGrid> = (args) => <CardGrid {...args} data={mockData} />;
+const Template: ComponentStory<any> = (args) => <LoadingPage {...args} />;
 
 export const Default = Template.bind({});

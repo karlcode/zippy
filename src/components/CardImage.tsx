@@ -1,9 +1,13 @@
 import React from "react";
 
-const CardImage = ({ url }: { url: string }): JSX.Element => {
+interface CardImageProps {
+  url: string
+}
+
+const CardImage = ({ url }: CardImageProps): JSX.Element => {
   return (
     <div className={`cardImageContainer`}>
-      <img className={`cardImage`} src={url} alt={"shoey"} />
+      <img loading="lazy" className={`cardImage`} src={url} alt={"shoey"} />
     </div>
   );
 };

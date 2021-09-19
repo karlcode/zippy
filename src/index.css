@@ -253,6 +253,10 @@ h2 {
   text-decoration: line-through;
 }
 
+.hidden {
+  visibility: hidden;
+}
+
 @font-face {
   font-family: "Roc Grotesk";
   src: local("Roc Grotesk"), url(./assets/fonts/RocGrotesk.ttf) format("truetype");

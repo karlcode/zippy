@@ -5,7 +5,7 @@ import CardImage from "./CardImage";
 import {ProductListData} from "../ProductListInterface";
 
 interface CardProps {
-  onClick: () => any;
+  onClick?: () => any;
   data: ProductListData;
 }
 

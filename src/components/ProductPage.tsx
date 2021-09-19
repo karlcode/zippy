@@ -1,28 +1,26 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useState } from "react";
 import { Pagination } from "./Pagination";
-import { LoadingPage } from "./LoadingPage";
+import { wrapResource } from "../utils";
+import { getProducts } from "../SearchResultsApi";
+import "./ProductPage.css";
+import { LoadingCardGrid } from "./LoadingCardGrid";
 
 const CardGrid = lazy(() => import("./CardGrid"));
 
-interface ProductPageProps {
-  data: any;
-}
+const ProductPage = (): JSX.Element => {
+  const [products, setProducts] = useState(() => wrapResource(getProducts(1)));
 
-const ProductPage = ({ data }: ProductPageProps): JSX.Element => {
-  // // Suspense resource wrapper for handling data fetching states
-  // const [state, setState] = useState(() => wrapResource(getProducts(1)).read());
-  // const onPageChange = ({ selected }: { selected: number }) => {
-  //   const resource = wrapResource(getProducts(selected)).read();
-  //   setState(resource);
-  // };
-  const properdata = data.read();
+  const onPageChange = ({ selected }: { selected: number }): void => {
+    const pageNumber = selected + 1; // 0 based index on pagination
+    setProducts(wrapResource(getProducts(pageNumber)));
+  };
   return (
-    <>
-      <Suspense fallback={<LoadingPage />}>
-        <CardGrid data={properdata} />
+    <div className={`ProductPage`}>
+      <Suspense fallback={<LoadingCardGrid />}>
+        <CardGrid data={products} />
       </Suspense>
-      <Pagination visible pageCount={100} range={4} onPageChange={(selectedItem) => console.log("yes")} />
-    </>
+      <Pagination visible pageCount={100} range={4} onPageChange={onPageChange} />
+    </div>
   );
 };
 
