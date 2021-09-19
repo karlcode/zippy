@@ -2,16 +2,15 @@ import React, { lazy, Suspense } from "react";
 
 import "./CardGrid.css";
 import { Modal, useModal } from "./Modal";
-import { ProductListData } from "../App";
 import { LoadingCard } from "./LoadingCard";
-import {Pagination} from "./Pagination";
+import { ProductListData } from "../ProductListInterface";
 
 interface CardGridProps {
   data: ProductListData[];
 }
 
 const Card = lazy(async () => {
-  await new Promise((resolve) => setTimeout(resolve, 300));
+  await new Promise((resolve) => setTimeout(resolve, 1000));
   return import("./Card");
 });
 
@@ -36,12 +35,9 @@ const CardGrid = ({ data }: CardGridProps): JSX.Element => {
       <CardGridHeader />
       <div className={`cardGridContainer`}>
         <Suspense fallback={<LoadingCard />}>
-          {data.map((item) => (
-            <Card key={item.id} onClick={openModalWithData(item)} data={item} />
-          ))}
+          {data && data.map((item) => <Card key={item.id} onClick={openModalWithData(item)} data={item} />)}
         </Suspense>
       </div>
-      <Pagination visible pageCount={100} range={4} />
       <Modal onClose={closeModal} visible={visible} data={modalData} />
     </div>
   );

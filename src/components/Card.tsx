@@ -1,8 +1,8 @@
 import React from "react";
 import "./Card.css";
 import { convertToPrice } from "../utils";
-import { ProductListData } from "../App";
 import CardImage from "./CardImage";
+import {ProductListData} from "../ProductListInterface";
 
 interface CardProps {
   onClick: () => any;

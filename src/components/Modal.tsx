@@ -2,9 +2,9 @@ import React, { useState } from "react";
 
 import "./Modal.css";
 import { createPortal } from "react-dom";
-import { ProductListData } from "../App";
 import { convertToPrice } from "../utils";
 import { Button } from "./Button";
+import {ProductListData} from "../ProductListInterface";
 
 interface ModalProps {
   visible: boolean;
@@ -42,10 +42,7 @@ export const Modal = ({ visible, onClose, data }: ModalProps) => {
   const productPrice = convertToPrice(data.productPrice);
   const installment = convertToPrice(data.productPrice / 4);
   return createPortal(
-    <div
-      className={`Modal ${visible ? "Modal--open" : ""}`}
-      onClick={onClose}
-      role="presentation">
+    <div className={`Modal ${visible ? "Modal--open" : ""}`} onClick={onClose} role="presentation">
       <div className={`Modal-content ${visible ? "Modal-content--open" : ""}`} onClick={(e) => e.stopPropagation()}>
         <div className={`Modal-body`}>
           <div className={`Modal-imageContainer`}>

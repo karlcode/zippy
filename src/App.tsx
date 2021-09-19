@@ -1,21 +1,13 @@
-import React, { Suspense } from "react";
+import React, { lazy, Suspense } from "react";
 import "./index.css";
 import "./App.css";
 import { Hero } from "./components/Hero";
 import { Convert, SearchResultsInterface } from "./SearchResultsInterface";
-import { ProductPage } from "./components/ProductPage";
 import { LoadingPage } from "./components/LoadingPage";
-import { wrapAsync } from "./utils";
+import { wrapResource } from "./utils";
+import { ProductListData } from "./ProductListInterface";
 
-export interface ProductListData {
-  id: string;
-  productTitle: string;
-  productPrice: number;
-  productCurrency: number;
-  productImagePath: string;
-  retailerName: string;
-  retailerUrl: string;
-}
+const ProductPage = lazy(() => import("./components/ProductPage"));
 
 const resultsDtoToProductListData = ({ data, meta }: SearchResultsInterface): ProductListData[] => {
   return data.map((d) => ({
@@ -28,25 +20,25 @@ const resultsDtoToProductListData = ({ data, meta }: SearchResultsInterface): Pr
     retailerUrl: d.attributes.retailer_url,
   }));
 };
+async function getProducts() {
+  const response = await fetch("https://api.theurge.com.au/search-results?brands=Nike", {
+    headers: {
+      Accept: "application/json",
+    },
+  });
+  const rawJSON = await response.text();
+  const parsedJSON = Convert.toSearchResultsInterface(rawJSON);
+  return resultsDtoToProductListData(parsedJSON);
+}
 
+const data = wrapResource(getProducts())
 function App() {
-  async function getProducts() {
-    const response = await fetch("https://api.theurge.com.au/search-results?brands=Nike", {
-      headers: {
-        Accept: "application/json",
-      },
-    });
-    const rawJSON = await response.text();
-    const parsedJSON = Convert.toSearchResultsInterface(rawJSON);
-    return resultsDtoToProductListData(parsedJSON);
-  }
-
   return (
     <div className="App">
       <Hero />
       <div className={`App_products`}>
         <Suspense fallback={<LoadingPage />}>
-          <ProductPage data={wrapAsync(getProducts())} />
+          <ProductPage data={data} />
         </Suspense>
       </div>
     </div>
