@@ -45,9 +45,6 @@ export const Modal = ({ visible, onClose, data }: ModalProps) => {
     <div
       className={`Modal ${visible ? "Modal--open" : ""}`}
       onClick={onClose}
-      aria-labelledby={""}
-      aria-describedby={""}
-      aria-modal
       role="presentation">
       <div className={`Modal-content ${visible ? "Modal-content--open" : ""}`} onClick={(e) => e.stopPropagation()}>
         <div className={`Modal-body`}>
@@ -63,7 +60,7 @@ export const Modal = ({ visible, onClose, data }: ModalProps) => {
               <span className={`rightAlign`}>{installment}</span>
             </h2>
             <span className={`row rightAlign`}>{productPrice} split into 4 easy payments</span>
-            <Button className={`Modal-actionButton`} label={"Add to Cart"} primary />
+            <Button className={`Modal-actionButton`} label={"Add to Cart"} primary={false} />
           </div>
         </div>
         <button className={`Modal-closeButton`} onClick={onClose} />

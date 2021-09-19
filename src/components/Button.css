@@ -1,16 +1,24 @@
-.primaryButton {
-    color: var(--color-primary);
-    border-radius: 4px;
-    background: white;
-    width: 132px;
-    height: 43px;
-    font-weight: bold;
-    cursor: pointer;
-    display: inline-block;
-    vertical-align: middle;
-    transition: background-color 0.2s ease-in;
+.Button {
+  width: 132px;
+  height: 43px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 4px;
+  display: inline-block;
+  vertical-align: middle;
+  transition: background-color 0.2s ease-in;
 }
 
-.primaryButton:hover {
-    background: gainsboro;
+.Button-primary {
+  color: var(--color-primary);
+  background: white;
+}
+
+.Button-secondary {
+  color: var(--color-primary);
+  background: var(--color-limeousine);;
+}
+
+.Button:hover {
+  background: gainsboro;
 }

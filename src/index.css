@@ -146,6 +146,7 @@ html {
   --color-accent: #fef2f4;
   --color-grey: #525761;
   --color-beige: #faf0e6;
+  --color-limeousine: #dcf995;
   --color-offblack: rgba(0, 0, 0, 0.75);
   --gutter: 1em;
 }
@@ -165,7 +166,7 @@ h1 {
 }
 
 h2 {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
 }
 
 @media (min-width: 0px) {
@@ -175,9 +176,7 @@ h2 {
 }
 
 @media (min-width: 400px) {
-
 }
-
 
 @media (min-width: 590px) {
   h1 {
@@ -185,7 +184,7 @@ h2 {
   }
 
   h2 {
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
 
   .withGutter {
@@ -196,6 +195,10 @@ h2 {
 @media (min-width: 900px) {
   h1 {
     font-size: 3rem;
+  }
+
+  h2 {
+    font-size: 2rem;
   }
 
   .withGutter {

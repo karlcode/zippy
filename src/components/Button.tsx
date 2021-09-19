@@ -28,7 +28,7 @@ export const Button = ({ primary = false, backgroundColor, label, className, ...
   return (
     <button
       type="button"
-      className={`${primary ? "primaryButton" : "secondaryButton"} highlight ${className}`}
+      className={`Button ${primary ? "Button-primary" : "Button-secondary"} highlight ${className}`}
       style={{ backgroundColor }}
       {...props}>
       {label}

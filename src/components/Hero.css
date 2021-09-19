@@ -15,8 +15,8 @@
   height: 100%;
   top: 0;
   left: 0;
-  filter: blur(3px) brightness(80%);
-  transition: filter 1s;
+  filter: blur(3px) brightness(70%);
+  transition: filter 0.7s ease-in;
 }
 
 .heroImage {

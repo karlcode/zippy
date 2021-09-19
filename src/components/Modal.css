@@ -61,8 +61,8 @@
   align-items: center;
   flex-direction: column;
   -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
-  -moz-box-sizing: border-box;    /* Firefox, other Gecko */
-  box-sizing: border-box;         /* Opera/IE 8+ */
+  -moz-box-sizing: border-box; /* Firefox, other Gecko */
+  box-sizing: border-box; /* Opera/IE 8+ */
   padding: 40px 20px;
   overflow: scroll;
 }
@@ -75,8 +75,8 @@
 
 .Modal-actionButton {
   position: fixed;
-  bottom: 0;
-  width: 100%;
+  bottom: 10px;
+  width: 80%;
 }
 
 .Modal-closeButton {
@@ -121,17 +121,15 @@
     padding: 40px;
   }
 
-  .Modal-closeButton {
-    background: transparent;
-  }
-
-  .Modal-actionButton {
-    position: relative;
-  }
-
   .Modal-imageContainer {
     height: 100%;
     max-height: 40%;
+  }
+}
+
+@media (min-width: 768px) {
+  .Modal-imageContainer {
+    max-height: 60%;
   }
 }
 
@@ -140,10 +138,18 @@
     flex-direction: row;
   }
 
+  .Modal-actionButton {
+    position: relative;
+  }
+
   .Modal-imageContainer {
-    min-width: 60%;
-    width: 60%;
-    max-width: 60%;
+    min-width: 55%;
+    width: 55%;
+    max-width: 55%;
     max-height: 100%;
+  }
+
+  .Modal-closeButton {
+    background: transparent;
   }
 }
