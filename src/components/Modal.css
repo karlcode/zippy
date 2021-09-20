@@ -14,12 +14,12 @@
   align-items: center;
 }
 
-.Modal--open {
+.Modal_open {
   pointer-events: visible;
   opacity: 1;
 }
 
-.Modal-content {
+.Modal-Content {
   max-width: 100%;
   max-height: 100%;
   width: 100%;
@@ -35,12 +35,12 @@
   border: 10px solid var(--color-beige);
 }
 
-.Modal-content--open {
+.Modal-Content_open {
   opacity: 1;
   transform: scale(1);
 }
 
-.Modal-body {
+.Modal-Body {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -48,13 +48,13 @@
   overflow: hidden;
 }
 
-.Modal-imageContainer {
+.Modal-ImageContainer {
   width: 100%;
   height: 40%;
   max-height: 40%;
 }
 
-.Modal-productContainer {
+.Modal-ProductContainer {
   flex: 1;
   display: flex;
   width: 100%;
@@ -67,19 +67,20 @@
   overflow-y: scroll;
 }
 
-.Modal-body-image {
+.Modal-BodyImage {
   object-fit: cover;
   width: 100%;
   height: 100%;
 }
 
-.Modal-actionButton {
+.Modal-ActionButton {
+  display: flex;
+  justify-content: center;
   position: fixed;
   bottom: 10px;
-  width: 80%;
 }
 
-.Modal-closeButton {
+.Modal-CloseButton {
   position: absolute;
   cursor: pointer;
   right: 16px;
@@ -90,8 +91,8 @@
   background: white;
 }
 
-.Modal-closeButton:before,
-.Modal-closeButton:after {
+.Modal-CloseButton:before,
+.Modal-CloseButton:after {
   position: absolute;
   content: " ";
   top: 9px;
@@ -100,16 +101,16 @@
   background-color: #333;
 }
 
-.Modal-closeButton:before {
+.Modal-CloseButton:before {
   transform: rotate(45deg);
 }
 
-.Modal-closeButton:after {
+.Modal-CloseButton:after {
   transform: rotate(-45deg);
 }
 
 @media (min-width: 400px) {
-  .Modal-content {
+  .Modal-Content {
     max-width: 90%;
     max-height: 90%;
     border-radius: 15px;
@@ -117,39 +118,39 @@
 }
 
 @media (min-width: 590px) {
-  .Modal-productContainer {
+  .Modal-ProductContainer {
     padding: 40px;
   }
 
-  .Modal-imageContainer {
+  .Modal-ImageContainer {
     height: 100%;
     max-height: 40%;
   }
 }
 
 @media (min-width: 768px) {
-  .Modal-imageContainer {
+  .Modal-ImageContainer {
     max-height: 60%;
   }
 }
 
 @media (min-width: 900px) {
-  .Modal-body {
+  .Modal-Body {
     flex-direction: row;
   }
 
-  .Modal-actionButton {
+  .Modal-ActionButton {
     position: relative;
   }
 
-  .Modal-imageContainer {
+  .Modal-ImageContainer {
     min-width: 55%;
     width: 55%;
     max-width: 55%;
     max-height: 100%;
   }
 
-  .Modal-closeButton {
+  .Modal-CloseButton {
     background: transparent;
   }
 }

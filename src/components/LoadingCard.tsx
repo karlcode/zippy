@@ -5,21 +5,21 @@ import Skeleton from "react-loading-skeleton";
 export const LoadingCard = (): JSX.Element => {
   return (
     <>
-      <div className={`cardContainer`}>
-        <div className={`cardImageContainer`}>
+      <div className={`CardContainer`}>
+        <div className={`CardImageContainer`}>
           <Skeleton height={"100%"} />
         </div>
-        <div className={`cardContent leftAlign`}>
-          <h5 className={`cardContent_title`}>
+        <div className={`CardContent leftAlign`}>
+          <h5 className={`CardContent-Title`}>
             <Skeleton />
           </h5>
-          <a href={"www.google.com"} target="_blank" rel="noreferrer" className={`cardContent_vendor hyperlink`}>
+          <a href={"www.google.com"} target="_blank" rel="noreferrer" className={`CardContent-Vendor hyperlink`}>
             <Skeleton />
           </a>
-          <p className={`cardContent_installment`}>
+          <p className={`CardContent-Installment`}>
             <Skeleton />
           </p>
-          <p className={`cardContent_subtext`}>
+          <p className={`CardContent-Subtext`}>
             <Skeleton />
           </p>
         </div>

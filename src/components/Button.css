@@ -9,12 +9,12 @@
   transition: background-color 0.2s ease-in;
 }
 
-.Button-primary {
+.Button_primary {
   color: var(--color-primary);
   background: white;
 }
 
-.Button-secondary {
+.Button_secondary {
   color: var(--color-primary);
   background: var(--color-limeousine);;
 }

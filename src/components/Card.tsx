@@ -2,7 +2,7 @@ import React from "react";
 import "./Card.css";
 import { convertToPrice } from "../utils";
 import CardImage from "./CardImage";
-import {ProductListData} from "../ProductListInterface";
+import { ProductListData } from "../ProductListInterface";
 
 interface CardProps {
   onClick?: () => any;
@@ -20,13 +20,13 @@ export const CardContent = ({ title, price, retailerUrl, retailerName }: CardCon
   const installment = convertToPrice(price / 4);
   const productPrice = convertToPrice(price);
   return (
-    <div className={`cardContent leftAlign`}>
-      <h5 className={`cardContent_title`}>{title}</h5>
-      <a href={retailerUrl} target="_blank" rel="noreferrer" className={`cardContent_vendor hyperlink`}>
+    <div className={`CardContent leftAlign`}>
+      <h5 className={`CardContent-Title`}>{title}</h5>
+      <a href={retailerUrl} target="_blank" rel="noreferrer" className={`CardContent-Vendor hyperlink`}>
         {retailerName}
       </a>
-      <p className={`cardContent_installment`}>{installment}</p>
-      <p className={`cardContent_subtext`}>{productPrice} split into 4 easy payments</p>
+      <p className={`CardContent-Installment`}>{installment}</p>
+      <p className={`CardContent-Subtext`}>{productPrice} split into 4 easy payments</p>
     </div>
   );
 };
@@ -34,8 +34,8 @@ export const CardContent = ({ title, price, retailerUrl, retailerName }: CardCon
 const Card = ({ onClick, data }: CardProps): JSX.Element => {
   return (
     <>
-      <div className={`cardContainer`} onClick={onClick}>
-        <CardImage url={data.productImagePath} />
+      <div className={`CardContainer`} onClick={onClick}>
+        <CardImage url={data.productImagePath} alt={data.productTitle} />
         <CardContent
           title={data.productTitle}
           price={data.productPrice}

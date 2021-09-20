@@ -1,9 +1,9 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import shoey from "../assets/images/nike-pegasus.png";
 import CardGrid from "../components/CardGrid";
 import { ProductListData } from "../ProductListInterface";
-import { LoadingPage } from "../components/LoadingPage";
+import { MetaMeta } from "../SearchResultsInterface";
 
 export default {
   title: "Components/CardGrid",
@@ -23,7 +23,21 @@ const mockData = [...Array(16)].map(() => ({
   id: Math.random().toString(),
 }));
 
-// const Template: ComponentStory<typeof CardGrid> = (args) => <CardGrid {...args} data={mockData} />;
-const Template: ComponentStory<any> = (args) => <LoadingPage {...args} />;
+const LazyLoadedCardGrid = (props: any) => {
+  return (
+    <Suspense fallback={<div>loading</div>}>
+      <CardGrid {...props} />;
+    </Suspense>
+  );
+};
+
+const mockMeta: MetaMeta = { pageSize: 20, response_type: "", total: 120 };
+
+const Template: ComponentStory<typeof CardGrid> = (args) => <LazyLoadedCardGrid {...args} />;
 
 export const Default = Template.bind({});
+
+Default.args = {
+  data: { read: () => mockData },
+  meta: mockMeta,
+};

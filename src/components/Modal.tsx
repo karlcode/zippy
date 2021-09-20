@@ -43,13 +43,13 @@ export const Modal = ({ visible, onClose, data }: ModalProps) => {
   const productPrice = convertToPrice(data.productPrice);
   const installment = convertToPrice(data.productPrice / 4);
   return createPortal(
-    <div className={`Modal ${visible ? "Modal--open" : ""}`} onClick={onClose} role="presentation">
-      <div className={`Modal-content ${visible ? "Modal-content--open" : ""}`} onClick={(e) => e.stopPropagation()}>
-        <div className={`Modal-body`}>
-          <div className={`Modal-imageContainer`}>
-            <img className={`Modal-body-image`} src={data.productImagePath} alt={""} />
+    <div className={`Modal ${visible ? "Modal_open" : ""}`} onClick={onClose} role="presentation">
+      <div className={`Modal-Content ${visible ? "Modal-Content_open" : ""}`} onClick={(e) => e.stopPropagation()}>
+        <div className={`Modal-Body`}>
+          <div className={`Modal-ImageContainer`}>
+            <img className={`Modal-BodyImage`} src={data.productImagePath} alt={""} />
           </div>
-          <div className={`Modal-productContainer`}>
+          <div className={`Modal-ProductContainer`}>
             <h1 className={`highlight row`}>{data.productTitle}</h1>
             <h2 className={`highlight row`}>
               <a className={`hyperlink`} href={data.retailerUrl} rel="noreferrer" target="_blank">
@@ -61,10 +61,12 @@ export const Modal = ({ visible, onClose, data }: ModalProps) => {
             <div className={`placeholderText`}>
               <Skeleton count={5}/>
             </div>
-            <Button className={`Modal-actionButton`} label={"Add to Cart"} primary={false} />
+            <div className={`Modal-ActionButton`}>
+              <Button label={"Add to Cart"} primary={false} />
+            </div>
           </div>
         </div>
-        <button className={`Modal-closeButton`} onClick={onClose} />
+        <button className={`Modal-CloseButton`} onClick={onClose} />
       </div>
     </div>,
     document.getElementById("root") || document.body

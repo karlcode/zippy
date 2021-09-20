@@ -1,4 +1,4 @@
-.cardGrid {
+.CardGrid {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -7,7 +7,7 @@
 
 }
 
-.cardGridContainer {
+.CardGridContainer {
   width: 100%;
   height: 100%;
   display: grid;
@@ -19,42 +19,42 @@
   grid-template-columns: repeat(1, 1fr);
 }
 
-.cardGridHeader {
+.CardGridHeader {
   flex-direction: column;
 }
 
-.cardGridHeader_moreLink {
+.CardGridHeader-MoreLink {
   font-size: 20px;
   font-weight: 600;
   padding-bottom: 10px;
 }
 
-.cardGridHeader_productCount {
+.CardGridHeader-ProductCount {
   font-size: 18px;
 }
 
 @media (min-width: 590px) {
-  .cardGridContainer {
+  .CardGridContainer {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .cardGridHeader {
+  .CardGridHeader {
     flex-direction: row;
   }
 
-  .cardGridHeader_moreLink {
+  .CardGridHeader-MoreLink {
     padding-bottom: 0;
   }
 }
 
 @media (min-width: 900px) {
-  .cardGridContainer {
+  .CardGridContainer {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
 @media (min-width: 1200px) {
-  .cardGridContainer {
+  .CardGridContainer {
     grid-template-columns: repeat(4, 1fr);
   }
 }

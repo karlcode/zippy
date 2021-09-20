@@ -6,7 +6,7 @@
   line-height: 40px;
 }
 
-.Pagination-link {
+.Pagination-Link {
   display: block;
   font-weight: 600;
   width: 40px;
@@ -15,15 +15,15 @@
   border-radius: 50%;
 }
 
-.Pagination-link:hover {
+.Pagination-Link:hover {
   background-color: var(--color-beige);
 }
 
-.Pagination-activeLink {
+.Pagination-ActiveLink {
   color: white;
   background-color: var(--color-primary) !important;
 }
 
-.Pagination-ellipses {
+.Pagination-Ellipses {
   width: 40px;
 }
