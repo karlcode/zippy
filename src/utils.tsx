@@ -52,7 +52,7 @@ export const loadImage = (source: string): Resource => {
   if (resource) return resource;
   resource = wrapResource(
     new Promise((res, rej) => {
-      const img = new window.Image();
+      const img = document.createElement("img");
       img.src = source;
       img.addEventListener("load", () => res(source));
       img.addEventListener("error", () => rej(new Error("Couldn't load image")));

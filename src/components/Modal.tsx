@@ -8,7 +8,7 @@ import { ProductListData } from "../ProductListInterface";
 import Skeleton from "react-loading-skeleton";
 
 interface ModalProps {
-  visible: boolean;
+  visible: boolean; // For SSR purposes only (for now) :)
   onClose: () => any;
   data: ProductListData;
 }

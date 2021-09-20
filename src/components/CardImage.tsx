@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { loadImage } from "../utils";
-import "./Card.css"
+import "./Card.css";
 
 interface CardImageProps {
   url: string;
@@ -8,7 +8,9 @@ interface CardImageProps {
 }
 
 const SuspenseImage = (props: React.ImgHTMLAttributes<HTMLImageElement>): JSX.Element => {
-  props.src && loadImage(props.src).read();
+  useEffect(() => {
+    props.src && loadImage(props.src).read();
+  }, []);
   return <img {...props} alt={props.alt} />;
 };
 

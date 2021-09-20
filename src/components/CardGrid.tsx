@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./CardGrid.css";
 import { Modal, useModal } from "./Modal";
 import { ProductListData } from "../ProductListInterface";
@@ -19,7 +19,9 @@ export const CardGridHeader = ({ meta }: { meta: MetaMeta }): JSX.Element => {
           Air Max, Air Jordan, Flyknit...
         </a>
       </span>
-      <span className={`CardGridHeader-ProductCount highlight grey rightAlign`}>{meta.total} products from 8 retailers</span>
+      <span className={`CardGridHeader-ProductCount highlight grey rightAlign`}>
+        {meta.total} products from 8 retailers
+      </span>
     </div>
   );
 };
@@ -35,7 +37,7 @@ const CardGrid = ({ data, meta }: CardGridProps): JSX.Element => {
         {completeData &&
           completeData.map((item) => <Card key={item.id} onClick={openModalWithData(item)} data={item} />)}
       </div>
-      <Modal onClose={closeModal} visible={visible} data={modalData} />
+      {visible ?? <Modal onClose={closeModal} visible={visible} data={modalData} />}
     </div>
   );
 };

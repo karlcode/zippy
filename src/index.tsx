@@ -1,4 +1,4 @@
 import { hydrateRoot } from "react-dom";
 import App from "./App";
 // @ts-ignore
-hydrateRoot(document, <App />);
+hydrateRoot(document.body, <App />);
