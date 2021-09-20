@@ -10,6 +10,7 @@
     "@types/node": "^12.20.25",
     "@types/react": "^17.0.21",
     "@types/react-dom": "^17.0.9",
+    "babel-loader": "^8.2.2",
     "concurrently": "^6.2.1",
     "cross-env": "^7.0.3",
     "express": "^4.17.1",
@@ -31,9 +32,10 @@
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public",
-    "ssr": "concurrently \"npm run server\" \"npm run bundler\"",
-    "server": "cross-env NODE_ENV=development nodemon -- dist/bundle.js",
-    "bundler": "cross-env NODE_ENV=development nodemon -- scripts/build.js"
+    "ssr": "concurrently \"npm run bundleClient\" \"npm run buildServer\" \"npm run runServer\"",
+    "buildServer": "NODE_ENV=development webpack",
+    "runServer": "cross-env NODE_ENV=development nodemon -- dist/bundle.js",
+    "bundleClient": "cross-env NODE_ENV=development node scripts/build.js"
   },
   "eslintConfig": {
     "extends": [
@@ -77,6 +79,10 @@
     ]
   },
   "devDependencies": {
+    "@babel/cli": "^7.15.7",
+    "@babel/core": "^7.15.5",
+    "@babel/preset-env": "^7.15.6",
+    "@babel/preset-typescript": "^7.15.0",
     "@storybook/addon-actions": "^6.3.8",
     "@storybook/addon-essentials": "^6.3.8",
     "@storybook/addon-links": "^6.3.8",
@@ -93,16 +99,6 @@
   "nodemonConfig": {
     "ignore": [
       "build/*"
-    ]
-  },
-  "babel": {
-    "presets": [
-      [
-        "react-app",
-        {
-          "runtime": "automatic"
-        }
-      ]
     ]
   }
 }

@@ -29,9 +29,23 @@ webpack(
     module: {
       rules: [
         {
+          test: /\.js$/,
+          use: "babel-loader",
+          exclude: /node_modules/,
+        },
+        {
           test: /\.tsx?$/,
           use: "ts-loader",
           exclude: /node_modules/,
+        },
+        {
+          test: /\.css$/i,
+          use: ["css-loader"],
+        },
+        { test: /\.(jpe?g|png|gif|svg|xml)$/i, use: "file-loader" },
+        {
+          test: /\.(woff|woff2|eot|ttf|otf)$/,
+          loader: "file-loader",
         },
       ],
     },

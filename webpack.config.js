@@ -1,7 +1,8 @@
 const path = require("path");
 
 module.exports = {
-  entry: "./server/server.js",
+  entry: [path.resolve(__dirname, "./server/server.js")],
+  devtool: "cheap-module-source-map",
   target: "node",
   module: {
     rules: [
@@ -12,7 +13,7 @@ module.exports = {
       },
       {
         test: /\.tsx?$/,
-        use: "ts-loader",
+        use: "babel-loader",
         exclude: /node_modules/,
       },
       {

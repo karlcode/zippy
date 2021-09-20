@@ -11,37 +11,45 @@
 const babelRegister = require('@babel/register');
 babelRegister({
   ignore: [/[\\\/](build|server\/server|node_modules)[\\\/]/],
-  presets: [['react-app', {runtime: 'automatic'}]],
+  presets: ["@babel/preset-typescript", ['react-app', {runtime: 'automatic'}]],
   plugins: ['@babel/transform-modules-commonjs'],
 });
 
 const express = require('express');
 const {readFileSync} = require('fs');
 const path = require('path');
-const render = require('./render');
-const {JS_BUNDLE_DELAY} = require('./delays');
+const {pipeToNodeWritable} = require("react-dom/server");
+const App = require("../src/App");
+const React = require("react");
 
-const PORT = process.env.PORT || 4000;
+const PORT = 1337;
 const app = express();
-
-app.use((req, res, next) => {
-  if (req.url.endsWith('.js')) {
-    // Artificially delay serving JS
-    // to demonstrate streaming HTML.
-    setTimeout(next, JS_BUNDLE_DELAY);
-  } else {
-    next();
-  }
-});
 
 app.get(
   '/',
   handleErrors(async function(req, res) {
     await waitForWebpack();
-    render(req.url, res);
+    res.socket.on("error", (error) => {
+      console.error("Fatal", error);
+    });
+    let didError = false;
+    const { startWriting, abort } = pipeToNodeWritable(<App />, res, {
+      onReadyToStream() {
+        // If something errored before we started streaming, we set the error code appropriately.
+        res.statusCode = didError ? 500 : 200;
+        res.setHeader("Content-type", "text/html");
+        res.write("<!DOCTYPE html>");
+        startWriting();
+      },
+      onError(x) {
+        didError = true;
+        console.error(x);
+      },
+    });
   })
 );
 app.use(express.static('build'));
+app.use(express.static('dist'));
 app.use(express.static('public'));
 
 app
