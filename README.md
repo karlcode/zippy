@@ -1,46 +1,63 @@
-# Getting Started with Create React App
+## Assignment
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Running the code
+Client side code - `https://karl-zip-assignment.netlify.app/`
 
-## Available Scripts
+`npm start` for client side code
 
-In the project directory, you can run:
+`npm run storybook` for Storybook viewing
 
-### `npm start`
+Branch `ssr-experiment` contains the half finished SSR work 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+`npm run ssr` to serve on port 10101
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+---
 
-### `npm test`
+### Thoughts
+I enjoyed the task as it helped me learn a lot of the nuances in JS and CSS that would otherwise be abstracted away by the frameworks I use day to day. 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+In this task I tried to use as few libraries as possible, both to push my understanding of the core underlying concepts and also because I find picking up new libraries is sometimes more cumbersome than implementing the simple solution.
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Tooling
+Setup project with create-react app. Used basic CSS and attempted to write it in React BEM style. 
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+CSS using grid for easier management with responsive design. 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Used quicktype for generating the TS interface of the jsonapi. Unfortunately the tool couldn't pick up the complete interface since each product page had different values (i.e retailer codes) so I was forced to abandon using the tool's type checker and just force the response as expected.
 
-### `npm run eject`
+Using React.Suspense for fallback screen on the grid. This was my first time using Suspense and I think it's a really neat api for generating fallbacks. Had some confusion with the way async data fetching was meant to be configured as the convention seems to treat the data as a Resource type (and there was limited documentation around this) but once I got my head around the concept it was convenient to use.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Using `react-paginate` for the pagination component as I felt I didnt have enough time to implement one from scratch which would look good.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Using `react-loading-skeleton` for placeholder elements to be shown when UI is waiting on updates
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+#### SSR
+Setup SSR with a simple express server. Wrestled with webpack and babel compilation issues. As documentation stated, Suspense was not compatible with SSR so I needed to upgrade to React 18/Alpha and try out the new `pipeToNodeWritable` api.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Due to limited time I wasn't able to get the SSR completely working as I'm having issues hydrating the ssr result (so it just shows the template with css & no interactivity).
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Design Considerations
+I built the UI with a mobile first mindset so the css breakpoints reflect that I scale up changes based on the minimum width of the device. 
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Addressing the prompt for the product page, I opted for a modal design that expands to highlight the product image and show product info on the side. I felt this was a conventional layout in e-commerce UIs so it felt suitable. With regard to SEO, I believe the modal view would pose a challenge when site content is being crawled by search engines so this would definitely not be a production ready approach but a fun POC.
+
+---
+
+### Things I'd do next time
+Due to time constraints I wasn't able to implement everything I wanted to. Notably I ran out of time writing tests and making components accessible after I realised how much effort the SSR piece would be.
+
+- Some components could have been more generic rather than have implementation tied in
+- Images could be compressed further e.g webp vs png
+- Some css is probably not cross-browser compatible (`gap` from memory, some filter effects)
+- Start with accessible components first rather than add in compliance later
+- Make use of transitions on suspense fallback (fade in/out)
+- I didnt bother implementing a routing solution as I was in a rush to deliver the requirements listed out, but I would have probably used React Router & control the pagination that way (rather than using localstorage to keep the page number)
+
+
+
+
+
